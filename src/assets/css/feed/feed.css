@@ -1,0 +1,604 @@
+@charset "UTF-8";
+/* app.sass */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR");
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani");
+@import url("//db.onlinewebfonts.com/c/67680f2eb947c5cbd58b40961b4a61e9?family=Apple+SD+Gothic+Neo");
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block; }
+
+ul,
+ol {
+  list-style: none; }
+
+blockquote,
+q {
+  quotes: none; }
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none; }
+
+em,
+dfn,
+i {
+  font-style: normal; }
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  text-decoration: none; }
+
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none; }
+
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold; }
+
+del {
+  text-decoration: line-through; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+hr {
+  display: none; }
+
+input,
+select {
+  vertical-align: middle; }
+
+input {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0; }
+
+input[type="checkbox"] {
+  appearance: none; }
+
+input[type="text"]::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0; }
+
+input[type="text"]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0; }
+
+input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-results-button, input[type="search"]::-webkit-search-results-decoration {
+  display: none; }
+
+/* 구글 웹 폰트 적용 */
+@font-face {
+  font-family: "Apple SD Gothic Neo";
+  src: url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.eot");
+  src: url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.woff") format("woff"), url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.svg#Apple SD Gothic Neo") format("svg"); }
+
+/* 공통 스타일 */
+#popup {
+  position: fixed;
+  z-index: 1001;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: table;
+  font-weight: 500;
+  color: #222; }
+  #popup .wrapper {
+    display: table-cell;
+    vertical-align: middle; }
+    #popup .wrapper .contents {
+      position: relative;
+      width: 85vw;
+      max-width: 350px;
+      box-sizing: border-box;
+      margin: 0 auto;
+      padding: 24px 24px 24px 24px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1); }
+      #popup .wrapper .contents .top {
+        font-size: 2.0rem;
+        font-family: "Apple SD Gothic Neo"; }
+      #popup .wrapper .contents .message {
+        margin-top: 5px;
+        font-size: 1.4rem; }
+      #popup .wrapper .contents .btns {
+        margin-top: 15px;
+        text-align: right;
+        font-size: 1.4rem; }
+        #popup .wrapper .contents .btns button {
+          width: 55px;
+          height: 30px;
+          padding: 0;
+          border-radius: 5px;
+          background-color: #222;
+          color: #fff;
+          border: none;
+          outline: none;
+          transition: all .1s ease-in; }
+          #popup .wrapper .contents .btns button img {
+            vertical-align: middle; }
+          #popup .wrapper .contents .btns button:hover {
+            background-color: #ccc; }
+
+aside {
+  display: none; }
+
+@media only screen and (max-width: 768px) {
+  aside {
+    display: block;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    margin-left: -100%;
+    transition: all .2s ease-in; }
+    aside.active {
+      margin-left: 0%; }
+    aside .wrapper {
+      width: 100%;
+      height: 100%;
+      background-color: #FFF;
+      padding-top: 20px; }
+      aside .wrapper .title {
+        font-size: 2.0rem;
+        text-align: right;
+        padding-right: 30px;
+        color: #999; }
+      aside .wrapper .contents {
+        padding-top: 20px; }
+        aside .wrapper .contents li {
+          height: 50px;
+          line-height: 50px;
+          padding-left: 40px;
+          box-sizing: border-box;
+          font-size: 1.3rem; }
+          aside .wrapper .contents li div {
+            border-bottom: 1px solid #ccc;
+            position: relative;
+            padding-left: 12px; }
+            aside .wrapper .contents li div span i {
+              position: absolute;
+              top: 18px;
+              right: 12px;
+              color: #999; } }
+
+.svg-icon-important-ver-2-14 {
+  background: url("/svg/sprite.css-60b06065.svg") no-repeat; }
+
+.svg-icon-important-ver-2-14 {
+  background-position: 0 0; }
+
+.svg-icon-important-ver-2-14-dims {
+  width: 18px;
+  height: 18px; }
+
+html {
+  width: 100%;
+  height: 100%;
+  font-family: "Noto Sans KR";
+  font-size: 10px;
+  font-weight: 300; }
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none; }
+
+.mobile {
+  display: block; }
+
+.desktop {
+  display: none; }
+
+#feed {
+  background-color: #fff;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  /* app.sass */ }
+  #feed header {
+    position: relative;
+    min-width: 320px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    z-index: 999; }
+    #feed header .alert {
+      position: relative;
+      height: 40px;
+      line-height: 40px;
+      background-color: #222;
+      text-align: center;
+      font-size: 1.2rem;
+      color: #fff; }
+      #feed header .alert .left {
+        position: absolute;
+        top: 15px;
+        left: 10px;
+        transition: all .2s ease-in; }
+        #feed header .alert .left:hover {
+          color: #666; }
+      #feed header .alert .list {
+        display: flex;
+        transition: all .2s ease-in; }
+        #feed header .alert .list li {
+          min-width: 100%; }
+        #feed header .alert .list.step2 {
+          transform: translate(-100%); }
+        #feed header .alert .list.step3 {
+          transform: translate(-200%); }
+      #feed header .alert .right {
+        position: absolute;
+        top: 15px;
+        right: 10px;
+        transition: all .2s ease-in; }
+        #feed header .alert .right:hover {
+          color: #666; }
+    #feed header .content {
+      display: flex;
+      padding: 18px 12px;
+      text-align: center; }
+      #feed header .content .left {
+        flex: 1;
+        text-align: left;
+        height: 42px;
+        line-height: 42px;
+        transition: all .2s ease-in; }
+        #feed header .content .left i {
+          font-size: 1.6rem;
+          color: #999; }
+      #feed header .content .logo {
+        flex: 1;
+        transition: all .2s ease-in; }
+        #feed header .content .logo img {
+          height: 42px;
+          margin: 0 auto; }
+      #feed header .content .center {
+        display: none; }
+      #feed header .content .right {
+        flex: 1;
+        text-align: right;
+        height: 42px;
+        line-height: 42px;
+        transition: all .2s ease-in; }
+        #feed header .content .right i {
+          font-size: 1.6rem;
+          color: #999;
+          margin-left: 5px; }
+  #feed main section {
+    min-width: 320px; }
+    #feed main section .content-designer {
+      position: relative;
+      height: 400px;
+      overflow: hidden; }
+      #feed main section .content-designer img {
+        height: 100%; }
+      #feed main section .content-designer .wrapper {
+        position: absolute;
+        width: 100%;
+        left: 0px;
+        bottom: 0px; }
+        #feed main section .content-designer .wrapper .rect {
+          position: relative;
+          box-sizing: border-box;
+          padding: 20px;
+          background: rgba(0, 0, 0, 0.4);
+          color: #fff; }
+          #feed main section .content-designer .wrapper .rect p {
+            font-family: "Apple SD Gothic Neo";
+            font-size: 2.4rem; }
+          #feed main section .content-designer .wrapper .rect .line {
+            display: inline-block;
+            width: 20%;
+            height: 3px;
+            background-color: #fff; }
+          #feed main section .content-designer .wrapper .rect .sub {
+            font-family: "Noto Sans KR";
+            margin-top: 14px;
+            font-size: 1.4rem; }
+          #feed main section .content-designer .wrapper .rect .push {
+            position: absolute;
+            top: 25px;
+            right: 20px;
+            display: flex; }
+            #feed main section .content-designer .wrapper .rect .push span {
+              font-size: 1.2rem;
+              margin-right: 10px; }
+            #feed main section .content-designer .wrapper .rect .push .toggle {
+              opacity: 1; }
+              #feed main section .content-designer .wrapper .rect .push .toggle .tgl {
+                display: none; }
+                #feed main section .content-designer .wrapper .rect .push .toggle .tgl, #feed main section .content-designer .wrapper .rect .push .toggle .tgl:after, #feed main section .content-designer .wrapper .rect .push .toggle .tgl:before,
+                #feed main section .content-designer .wrapper .rect .push .toggle .tgl *,
+                #feed main section .content-designer .wrapper .rect .push .toggle .tgl *:after,
+                #feed main section .content-designer .wrapper .rect .push .toggle .tgl *:before,
+                #feed main section .content-designer .wrapper .rect .push .toggle .tgl + .tgl-btn {
+                  box-sizing: border-box; }
+                  #feed main section .content-designer .wrapper .rect .push .toggle .tgl::selection, #feed main section .content-designer .wrapper .rect .push .toggle .tgl:after::selection, #feed main section .content-designer .wrapper .rect .push .toggle .tgl:before::selection,
+                  #feed main section .content-designer .wrapper .rect .push .toggle .tgl *::selection,
+                  #feed main section .content-designer .wrapper .rect .push .toggle .tgl *:after::selection,
+                  #feed main section .content-designer .wrapper .rect .push .toggle .tgl *:before::selection,
+                  #feed main section .content-designer .wrapper .rect .push .toggle .tgl + .tgl-btn::selection {
+                    background: none; }
+                #feed main section .content-designer .wrapper .rect .push .toggle .tgl + .tgl-btn {
+                  outline: 0;
+                  display: block;
+                  width: 4em;
+                  height: 2em;
+                  position: relative;
+                  cursor: pointer;
+                  user-select: none; }
+                  #feed main section .content-designer .wrapper .rect .push .toggle .tgl + .tgl-btn:after, #feed main section .content-designer .wrapper .rect .push .toggle .tgl + .tgl-btn:before {
+                    position: relative;
+                    display: block;
+                    content: "";
+                    width: 50%;
+                    height: 100%; }
+                  #feed main section .content-designer .wrapper .rect .push .toggle .tgl + .tgl-btn:after {
+                    left: 0; }
+                  #feed main section .content-designer .wrapper .rect .push .toggle .tgl + .tgl-btn:before {
+                    display: none; }
+                #feed main section .content-designer .wrapper .rect .push .toggle .tgl:checked + .tgl-btn:after {
+                  left: 50%; }
+              #feed main section .content-designer .wrapper .rect .push .toggle .tgl-light + .tgl-btn {
+                background: #f0f0f0;
+                border-radius: 2em;
+                padding: 2px;
+                transition: all .4s ease; }
+                #feed main section .content-designer .wrapper .rect .push .toggle .tgl-light + .tgl-btn:after {
+                  border-radius: 50%;
+                  background: #fff;
+                  transition: all .2s ease; }
+              #feed main section .content-designer .wrapper .rect .push .toggle .tgl-light:checked + .tgl-btn {
+                background: #0077ff; }
+    #feed main section .content-feed .feedlist {
+      padding: 12px; }
+      #feed main section .content-feed .feedlist .title {
+        position: relative;
+        margin-top: 4.8rem;
+        margin-bottom: 4.8rem;
+        text-align: center; }
+        #feed main section .content-feed .feedlist .title p {
+          font-family: "Apple SD Gothic Neo";
+          font-size: 2.4rem;
+          z-index: 2; }
+        #feed main section .content-feed .feedlist .title span {
+          display: inline-block;
+          width: 50px;
+          height: 2px;
+          background-color: #222; }
+      #feed main section .content-feed .feedlist ul {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -1.2rem;
+        margin-right: -1.2rem; }
+        #feed main section .content-feed .feedlist ul li {
+          width: 50%;
+          box-sizing: border-box;
+          margin-top: 20px;
+          margin-bottom: 20px; }
+          #feed main section .content-feed .feedlist ul li .feed {
+            padding: 12px;
+            text-align: center; }
+            #feed main section .content-feed .feedlist ul li .feed .thumbnail {
+              width: 100%;
+              height: 200px;
+              overflow: hidden; }
+              #feed main section .content-feed .feedlist ul li .feed .thumbnail img {
+                width: 100%; }
+            #feed main section .content-feed .feedlist ul li .feed .desc {
+              margin-top: 20px; }
+              #feed main section .content-feed .feedlist ul li .feed .desc .designer {
+                font-family: "Apple SD Gothic Neo";
+                font-size: 1.4rem;
+                display: inline-block;
+                padding: 2px 15px;
+                border: 1px solid #333; }
+              #feed main section .content-feed .feedlist ul li .feed .desc .name {
+                margin-top: 5px;
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: 1.4rem;
+                line-height: 23px;
+                color: #292929; }
+              #feed main section .content-feed .feedlist ul li .feed .desc .default {
+                font-family: "Apple SD Gothic Neo";
+                line-height: 23px;
+                font-size: 1.4rem;
+                color: #222;
+                text-decoration-line: line-through; }
+              #feed main section .content-feed .feedlist ul li .feed .desc .price {
+                font-family: "Apple SD Gothic Neo";
+                line-height: 23px;
+                font-size: 1.4rem;
+                color: #e2264d; }
+  #feed footer {
+    width: 100%;
+    padding: 18px 12px;
+    font-size: 1.2rem;
+    background-color: #222;
+    transition: all .2s ease-in; }
+    #feed footer .wrapper {
+      height: 400px;
+      color: #aaa; }
+      #feed footer .wrapper .logo img {
+        width: 100px; }
+      #feed footer .wrapper .policy {
+        margin-top: 10px;
+        padding: 5px;
+        border-bottom: 1px solid #aaa; }
+        #feed footer .wrapper .policy ul li {
+          margin-bottom: 5px; }
+          #feed footer .wrapper .policy ul li span {
+            cursor: pointer;
+            transition: all .2s ease-in; }
+            #feed footer .wrapper .policy ul li span:hover {
+              border-bottom: 1px solid #aaa; }
+      #feed footer .wrapper .copy {
+        margin-top: 5px; }
+  @media only screen and (min-width: 769px) {
+    #feed .mobile {
+      display: none; }
+    #feed .desktop {
+      display: block; }
+    #feed header .alert .left {
+      left: 100px; }
+    #feed header .alert .right {
+      right: 100px; }
+    #feed header .content {
+      padding: 18px 12px; }
+      #feed header .content .left {
+        height: 22px;
+        line-height: 22px; }
+      #feed header .content .logo {
+        text-align: left;
+        margin-left: 100px; }
+        #feed header .content .logo img {
+          margin: initial;
+          height: 22px; }
+      #feed header .content .center {
+        display: block; }
+        #feed header .content .center ul {
+          display: flex;
+          flex-direction: row;
+          font-size: 1.3rem; }
+          #feed header .content .center ul li {
+            width: 100px;
+            flex: 1 1 auto;
+            box-sizing: border-box; }
+            #feed header .content .center ul li span {
+              transition: all .2s ease-in;
+              border-bottom: 1px solid transparent;
+              cursor: pointer; }
+              #feed header .content .center ul li span:hover {
+                border-color: #222; }
+      #feed header .content .right {
+        height: 22px;
+        line-height: 22px;
+        margin-right: 100px; }
+    #feed main section .content .content-designer {
+      height: 500px; }
+      #feed main section .content .content-designer img {
+        width: 100%;
+        height: auto; }
+      #feed main section .content .content-designer .wrapper {
+        max-width: 1280px;
+        padding: 50px;
+        margin-left: 12px;
+        left: 50%;
+        transform: translateX(-50%); }
+        #feed main section .content .content-designer .wrapper .rect {
+          width: 60%; }
+    #feed main section .content .content-feed {
+      max-width: 1280px;
+      margin: 0 auto; }
+      #feed main section .content .content-feed .feedlist ul li {
+        width: 25%; }
+        #feed main section .content .content-feed .feedlist ul li .feed .thumbnail {
+          height: 300px; }
+    #feed footer {
+      padding: 18px 100px; } }
