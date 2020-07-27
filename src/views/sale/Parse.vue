@@ -1,12 +1,13 @@
 <template>
   <div id="parse">
       <VueHeader/>
-      <VueAside/>
+      <VueAside :flag="asideFlag" />
 
       <main>
         <section>
           <div class="content">
-
+              <div class="content-parse">
+              </div>
           </div>
         </section>
       </main>
@@ -32,7 +33,9 @@ export default {
     VuePopup
   },
 
-  data: () => ({}),
+  data: () => ({
+     asideFlag: false
+  }),
 };
 </script>
 

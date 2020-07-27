@@ -17,7 +17,7 @@
       </div>
       <div class="content">
           <div class="left mobile">
-              <button>
+              <button @click="asideOpen">
                   <i class="fas fa-bars"></i>
               </button>
           </div>
@@ -27,17 +27,17 @@
           </div>
           <div class="center">
               <ul>
-                  <li>
+                  <li @click="goDesigner">
                       <div>
                           <span>디자이너</span>
                       </div>
                   </li>
-                  <li>
+                  <li @click="goFeed">
                       <div>
                           <span>추천</span>
                       </div>
                   </li>
-                  <li>
+                  <li @click="goSale">
                       <div>
                           <span>세일정보</span>
                       </div>
@@ -63,6 +63,37 @@ export default {
   name: 'VueHeader',
   props: {
     msg: String
+  },
+
+  
+
+  methods: {
+      //메뉴바 on/off
+      asideOpen() {
+          this.$parent.asideFlag = true
+      },
+      //네비게이션 이동
+      goDesigner() {
+          if(this.$router.currentRoute.name === 'Designer'){
+              this.$parent.asideFlag = false
+          }else{
+              this.$router.push({ path: '/designer' })
+          }            
+      },
+      goFeed() {
+          if(this.$router.currentRoute.name === 'Feed'){
+              this.$parent.asideFlag = false
+          }else{
+              this.$router.push({ path: '/feed' })
+          }  
+      },
+      goSale() {
+          if(this.$router.currentRoute.name === 'Sale'){
+              this.$parent.asideFlag = false
+          }else{
+              this.$router.push({ path: '/sale' })
+          }  
+      }
   }
 }
 </script>

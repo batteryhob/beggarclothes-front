@@ -1,7 +1,7 @@
 <template>
   <div id="main">
-      <VueHeader/>
-      <VueAside/>
+      <VueHeader />
+      <VueAside :flag="asideFlag" />
 
       <main>
         <section>
@@ -9,7 +9,7 @@
               <div class="content-main">
                   <div class="swiper-container">
                       <ul class="swiper-wrapper">
-                          <li class="swiper-slide">
+                          <li class="swiper-slide" v-for="(feature, idx) in features" :key="idx" >
                               <div class="feature">
                                   <img src="/img/sample3.png" alt="">
                                   <div class="desc">
@@ -20,19 +20,6 @@
                                           <i class="fas fa-chevron-right right"></i>
                                       </button>
                                   </div>                                            
-                              </div>
-                          </li>
-                          <li class="swiper-slide">
-                              <div class="feature">
-                                  <img src="https://www.sotostore.com/images/61944/large.jpg" alt="웨일자켓">
-                                  <div class="desc">
-                                      <p>Our Legacy</p>
-                                      <p class="sub">웨일코트</p>
-                                      <button>
-                                          View Deal
-                                          <i class="fas fa-chevron-right right"></i>
-                                      </button>
-                                  </div>
                               </div>
                           </li>
                       </ul>                                
@@ -54,135 +41,24 @@
                       </span>
                   </div>
                   <div class="ranking">
-                      <ul>
-                          
-                              <li>
-                                  <div class="tag">
-                                      <div class="thumb">
-                                          <img src="/img/acne.png" alt="">
-                                      </div>
-                                      <div class="rank">
-                                          <span>1</span>
-                                      </div>
-                                      <div class="desc">
-                                          <p class="name">Acne Studio</p>
-                                          <p>
-                                              디매 언급량 감소
-                                              <i class="fas fa-angle-down down"></i>
-                                          </p>
-                                      </div>
-                                  </div>
-                              </li>
-                          
-                              <li>
-                                  <div class="tag">
-                                      <div class="thumb">
-                                          <img src="/img/acne.png" alt="">
-                                      </div>
-                                      <div class="rank">
-                                          <span>2</span>
-                                      </div>
-                                      <div class="desc">
-                                          <p class="name">Acne Studio</p>
-                                          <p>
-                                              디매 언급량 감소
-                                              <i class="fas fa-angle-down down"></i>
-                                          </p>
-                                      </div>
-                                  </div>
-                              </li>
-                          
-                              <li>
-                                  <div class="tag">
-                                      <div class="thumb">
-                                          <img src="/img/acne.png" alt="">
-                                      </div>
-                                      <div class="rank">
-                                          <span>3</span>
-                                      </div>
-                                      <div class="desc">
-                                          <p class="name">Acne Studio</p>
-                                          <p>
-                                              디매 언급량 감소
-                                              <i class="fas fa-angle-down down"></i>
-                                          </p>
-                                      </div>
-                                  </div>
-                              </li>
-                          
-                          
-                              <li>
-                                  <div class="tag">
-                                      <div class="thumb">
-                                          <img src="/img/nike.png" alt="">
-                                      </div>
-                                      <div class="rank">
-                                          <span>4</span>
-                                      </div>
-                                      <div class="desc">
-                                          <p class="name">Nike</p>
-                                          <p>
-                                              고아케 언급량 증가
-                                              <i class="fas fa-angle-double-up up"></i>
-                                          </p>
-                                      </div>
-                                  </div>
-                              </li>
-                          
-                              <li>
-                                  <div class="tag">
-                                      <div class="thumb">
-                                          <img src="/img/nike.png" alt="">
-                                      </div>
-                                      <div class="rank">
-                                          <span>5</span>
-                                      </div>
-                                      <div class="desc">
-                                          <p class="name">Nike</p>
-                                          <p>
-                                              고아케 언급량 증가
-                                              <i class="fas fa-angle-double-up up"></i>
-                                          </p>
-                                      </div>
-                                  </div>
-                              </li>
-                          
-                              <li>
-                                  <div class="tag">
-                                      <div class="thumb">
-                                          <img src="/img/nike.png" alt="">
-                                      </div>
-                                      <div class="rank">
-                                          <span>6</span>
-                                      </div>
-                                      <div class="desc">
-                                          <p class="name">Nike</p>
-                                          <p>
-                                              고아케 언급량 증가
-                                              <i class="fas fa-angle-double-up up"></i>
-                                          </p>
-                                      </div>
-                                  </div>
-                              </li>
-                          
-                              <li>
-                                  <div class="tag">
-                                      <div class="thumb">
-                                          <img src="/img/nike.png" alt="">
-                                      </div>
-                                      <div class="rank">
-                                          <span>7</span>
-                                      </div>
-                                      <div class="desc">
-                                          <p class="name">Nike</p>
-                                          <p>
-                                              고아케 언급량 증가
-                                              <i class="fas fa-angle-double-up up"></i>
-                                          </p>
-                                      </div>
-                                  </div>
-                              </li>
-                          
+                      <ul>                          
+                        <li v-for="(tag, idx) in tags" :key="idx" >
+                            <div class="tag">
+                                <div class="thumb">
+                                    <img src="/img/acne.png" alt="">
+                                </div>
+                                <div class="rank">
+                                    <span>1</span>
+                                </div>
+                                <div class="desc">
+                                    <p class="name">Acne Studio</p>
+                                    <p>
+                                        디매 언급량 감소
+                                        <i class="fas fa-angle-down down"></i>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>                          
                       </ul>
                   </div>
               </div>
@@ -198,250 +74,30 @@
                   </div>
                   <div class="feeds iscroll-container" id="feeds">
                       <div class="scroller">
-                          <ul class="clearfix">
-                              
-                                  <li>
-                                      <div class="feed">
-                                          <div class="thumbnail">
-                                              <img src="/img/sample1.png" alt="">
-                                          </div>
-                                          <div class="desc">
-                                              <p class="designer">Our Legacy</p>
-                                              <p class="name">플리츠 후드 집업</p>
-                                              <p class="price">
-                                                  ₩ 10,000
-                                                  <span>(₩ 10,000)</span>
-                                              </p>
-                                              <p class="interactive">
-                                                  <span class="eye">
-                                                      <i class="fas fa-eye"></i>22
-                                                  </span>
-                                                  <span class="heart">
-                                                      <i class="fas fa-heart"></i>1,200
-                                                  </span>
-                                              </p>
-                                          </div>
-                                      </div>
-                                  </li>
-                              
-                                  <li>
-                                      <div class="feed">
-                                          <div class="thumbnail">
-                                              <img src="/img/sample1.png" alt="">
-                                          </div>
-                                          <div class="desc">
-                                              <p class="designer">Our Legacy</p>
-                                              <p class="name">플리츠 후드 집업</p>
-                                              <p class="price">
-                                                  ₩ 10,000
-                                                  <span>(₩ 10,000)</span>
-                                              </p>
-                                              <p class="interactive">
-                                                  <span class="eye">
-                                                      <i class="fas fa-eye"></i>22
-                                                  </span>
-                                                  <span class="heart">
-                                                      <i class="fas fa-heart"></i>1,200
-                                                  </span>
-                                              </p>
-                                          </div>
-                                      </div>
-                                  </li>
-                              
-                              
-                                  <li>
-                                      <div class="feed">
-                                          <div class="thumbnail">
-                                              <img src="/img/sample2.png" alt="">
-                                          </div>
-                                          <div class="desc">
-                                              <p class="designer">Homme Plisse</p>
-                                              <p class="name">플리츠 후드 집업</p>
-                                              <p class="price">
-                                                  ₩ 10,000
-                                                  <span>(₩ 10,000)</span>
-                                              </p>
-                                              <p class="interactive">
-                                                  <span class="eye">
-                                                      <i class="fas fa-eye"></i>22
-                                                  </span>
-                                                  <span class="heart">
-                                                      <i class="fas fa-heart"></i>1,200
-                                                  </span>
-                                              </p>
-                                          </div>
-                                      </div>
-                                  </li>
-                              
-                                  <li>
-                                      <div class="feed">
-                                          <div class="thumbnail">
-                                              <img src="/img/sample2.png" alt="">
-                                          </div>
-                                          <div class="desc">
-                                              <p class="designer">Homme Plisse</p>
-                                              <p class="name">플리츠 후드 집업</p>
-                                              <p class="price">
-                                                  ₩ 10,000
-                                                  <span>(₩ 10,000)</span>
-                                              </p>
-                                              <p class="interactive">
-                                                  <span class="eye">
-                                                      <i class="fas fa-eye"></i>22
-                                                  </span>
-                                                  <span class="heart">
-                                                      <i class="fas fa-heart"></i>1,200
-                                                  </span>
-                                              </p>
-                                          </div>
-                                      </div>
-                                  </li>
-                              
-                              
-                                  <li>
-                                      <div class="feed">
-                                          <div class="thumbnail">
-                                              <img src="/img/sample2.png" alt="">
-                                          </div>
-                                          <div class="desc">
-                                              <p class="designer">Homme Plisse</p>
-                                              <p class="name">플리츠 후드 집업</p>
-                                              <p class="price">
-                                                  ₩ 10,000
-                                                  <span>(₩ 10,000)</span>
-                                              </p>
-                                              <p class="interactive">
-                                                  <span class="eye">
-                                                      <i class="fas fa-eye"></i>22
-                                                  </span>
-                                                  <span class="heart">
-                                                      <i class="fas fa-heart"></i>1,200
-                                                  </span>
-                                              </p>
-                                          </div>
-                                      </div>
-                                  </li>
-                              
-                                  <li>
-                                      <div class="feed">
-                                          <div class="thumbnail">
-                                              <img src="/img/sample2.png" alt="">
-                                          </div>
-                                          <div class="desc">
-                                              <p class="designer">Homme Plisse</p>
-                                              <p class="name">플리츠 후드 집업</p>
-                                              <p class="price">
-                                                  ₩ 10,000
-                                                  <span>(₩ 10,000)</span>
-                                              </p>
-                                              <p class="interactive">
-                                                  <span class="eye">
-                                                      <i class="fas fa-eye"></i>22
-                                                  </span>
-                                                  <span class="heart">
-                                                      <i class="fas fa-heart"></i>1,200
-                                                  </span>
-                                              </p>
-                                          </div>
-                                      </div>
-                                  </li>
-                              
-                                  <li>
-                                      <div class="feed">
-                                          <div class="thumbnail">
-                                              <img src="/img/sample2.png" alt="">
-                                          </div>
-                                          <div class="desc">
-                                              <p class="designer">Homme Plisse</p>
-                                              <p class="name">플리츠 후드 집업</p>
-                                              <p class="price">
-                                                  ₩ 10,000
-                                                  <span>(₩ 10,000)</span>
-                                              </p>
-                                              <p class="interactive">
-                                                  <span class="eye">
-                                                      <i class="fas fa-eye"></i>22
-                                                  </span>
-                                                  <span class="heart">
-                                                      <i class="fas fa-heart"></i>1,200
-                                                  </span>
-                                              </p>
-                                          </div>
-                                      </div>
-                                  </li>
-                              
-                                  <li>
-                                      <div class="feed">
-                                          <div class="thumbnail">
-                                              <img src="/img/sample2.png" alt="">
-                                          </div>
-                                          <div class="desc">
-                                              <p class="designer">Homme Plisse</p>
-                                              <p class="name">플리츠 후드 집업</p>
-                                              <p class="price">
-                                                  ₩ 10,000
-                                                  <span>(₩ 10,000)</span>
-                                              </p>
-                                              <p class="interactive">
-                                                  <span class="eye">
-                                                      <i class="fas fa-eye"></i>22
-                                                  </span>
-                                                  <span class="heart">
-                                                      <i class="fas fa-heart"></i>1,200
-                                                  </span>
-                                              </p>
-                                          </div>
-                                      </div>
-                                  </li>
-                              
-                                  <li>
-                                      <div class="feed">
-                                          <div class="thumbnail">
-                                              <img src="/img/sample2.png" alt="">
-                                          </div>
-                                          <div class="desc">
-                                              <p class="designer">Homme Plisse</p>
-                                              <p class="name">플리츠 후드 집업</p>
-                                              <p class="price">
-                                                  ₩ 10,000
-                                                  <span>(₩ 10,000)</span>
-                                              </p>
-                                              <p class="interactive">
-                                                  <span class="eye">
-                                                      <i class="fas fa-eye"></i>22
-                                                  </span>
-                                                  <span class="heart">
-                                                      <i class="fas fa-heart"></i>1,200
-                                                  </span>
-                                              </p>
-                                          </div>
-                                      </div>
-                                  </li>
-                              
-                                  <li>
-                                      <div class="feed">
-                                          <div class="thumbnail">
-                                              <img src="/img/sample2.png" alt="">
-                                          </div>
-                                          <div class="desc">
-                                              <p class="designer">Homme Plisse</p>
-                                              <p class="name">플리츠 후드 집업</p>
-                                              <p class="price">
-                                                  ₩ 10,000
-                                                  <span>(₩ 10,000)</span>
-                                              </p>
-                                              <p class="interactive">
-                                                  <span class="eye">
-                                                      <i class="fas fa-eye"></i>22
-                                                  </span>
-                                                  <span class="heart">
-                                                      <i class="fas fa-heart"></i>1,200
-                                                  </span>
-                                              </p>
-                                          </div>
-                                      </div>
-                                  </li>
-                              
+                          <ul class="clearfix">                              
+                            <li v-for="(feed, idx) in feeds" :key="idx" >
+                                <div class="feed">
+                                    <div class="thumbnail">
+                                        <img src="/img/sample1.png" alt="">
+                                    </div>
+                                    <div class="desc">
+                                        <p class="designer">Our Legacy</p>
+                                        <p class="name">플리츠 후드 집업</p>
+                                        <p class="price">
+                                            ₩ 10,000
+                                            <span>(₩ 10,000)</span>
+                                        </p>
+                                        <p class="interactive">
+                                            <span class="eye">
+                                                <i class="fas fa-eye"></i>22
+                                            </span>
+                                            <span class="heart">
+                                                <i class="fas fa-heart"></i>1,200
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
                           </ul>
                       </div>
                   </div>
@@ -457,48 +113,14 @@
                       </span>
                   </div>
                   <div class="mails">
-                      <ul>
-                          
-                          <li>
-                              <div class="mail">
-                                  <p class="subject">Sensse Up to 70%</p>
-                                  <p class="content">blah blah blahblah blah...</p>
-                                  <p class="date">2020-07-08</p>
-                              </div>
-                          </li>
-                          
-                          <li>
-                              <div class="mail">
-                                  <p class="subject">Sensse Up to 70%</p>
-                                  <p class="content">blah blah blahblah blah...</p>
-                                  <p class="date">2020-07-08</p>
-                              </div>
-                          </li>
-                          
-                          <li>
-                              <div class="mail">
-                                  <p class="subject">Sensse Up to 70%</p>
-                                  <p class="content">blah blah blahblah blah...</p>
-                                  <p class="date">2020-07-08</p>
-                              </div>
-                          </li>
-                          
-                          <li>
-                              <div class="mail">
-                                  <p class="subject">Sensse Up to 70%</p>
-                                  <p class="content">blah blah blahblah blah...</p>
-                                  <p class="date">2020-07-08</p>
-                              </div>
-                          </li>
-                          
-                          <li>
-                              <div class="mail">
-                                  <p class="subject">Sensse Up to 70%</p>
-                                  <p class="content">blah blah blahblah blah...</p>
-                                  <p class="date">2020-07-08</p>
-                              </div>
-                          </li>
-                          
+                      <ul>                          
+                        <li v-for="(mail, idx) in mails" :key="idx">
+                            <div class="mail">
+                                <p class="subject">Sensse Up to 70%</p>
+                                <p class="content">blah blah blahblah blah...</p>
+                                <p class="date">2020-07-08</p>
+                            </div>
+                        </li>
                       </ul>
                   </div>
               </div>
@@ -527,7 +149,14 @@ export default {
     VuePopup
   },
 
-  data: () => ({}),
+  data: () => ({
+      asideFlag: false,
+
+      features: [1,2,3,4,5],
+      tags: [1,2,3,4,5],
+      feeds: [1,2,3,4,5],
+      mails: [1,2,3,4,5]
+  }),
 };
 </script>
 

@@ -1,11 +1,11 @@
 <template>
-  <aside class="">
+  <aside :class="{ active: flag }">
       <div class="wrapper">
-          <div class="title">
+          <div class="title" @click="asideClose">
               <i class="fas fa-times"></i>
           </div>
           <ul class="contents">
-              <li>
+              <li @click="goDesigner">
                   <div>
                       <span>
                           디자이너
@@ -13,7 +13,7 @@
                       </span>
                   </div>
               </li>
-              <li>
+              <li @click="goFeed">
                   <div>
                       <span>
                           추천
@@ -21,7 +21,7 @@
                       </span>
                   </div>
               </li>
-              <li>
+              <li @click="goSale">
                   <div>
                       <span>
                           세일정보
@@ -38,7 +38,37 @@
 export default {
   name: 'VueAside',
   props: {
-    msg: String
+    flag: Boolean
+  },
+
+  methods: {
+      //메뉴바 on/off
+      asideClose() {
+          this.$parent.asideFlag = false
+      },
+      //네비게이션 이동
+      goDesigner() {
+          if(this.$router.currentRoute.name === 'Designer'){
+              this.$parent.asideFlag = false
+          }else{
+              this.$router.push({ path: '/designer' })
+          }            
+      },
+      goFeed() {
+          if(this.$router.currentRoute.name === 'Feed'){
+              this.$parent.asideFlag = false
+          }else{
+              this.$router.push({ path: '/feed' })
+          }  
+      },
+      goSale() {
+          if(this.$router.currentRoute.name === 'Sale'){
+              this.$parent.asideFlag = false
+          }else{
+              this.$router.push({ path: '/sale' })
+          }  
+      }
   }
+
 }
 </script>
