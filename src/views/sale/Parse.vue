@@ -7,6 +7,7 @@
         <section>
           <div class="content">
               <div class="content-parse">
+                {{ saleInfo }}
               </div>
           </div>
         </section>
@@ -23,6 +24,9 @@ import VueFooter from '../../shared/footer'
 import VueHeader from '../../shared/header'
 import VuePopup from '../../shared/popup'
 
+import gql from 'graphql-tag'
+
+
 export default {
   name: 'Parse',
 
@@ -33,8 +37,31 @@ export default {
     VuePopup
   },
 
+  apollo: {
+    // Simple query that will update the 'hello' vue property
+    saleInfo: {
+      // gql query
+      query: gql`query selectSaleInfo($seq: Int!) {
+        saleInfo : selectSaleInfo(seq: $seq){
+          seq,
+          from,
+          regdate,
+          subject,
+          content
+        }
+      }`,
+      variables () {
+        return {
+            seq: this.seq,
+        }
+      },
+    },
+  },
+
   data: () => ({
-     asideFlag: false
+     asideFlag: false,
+     seq: 94,
+     saleInfo: {}
   }),
 };
 </script>

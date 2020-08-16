@@ -9,8 +9,26 @@ Vue.config.productionTip = false
 import store from './vuex/store/index'
 Vue.use(Vuex)
 
+//graphql
+import VueApollo from 'vue-apollo'
+Vue.use(VueApollo)
+
+import ApolloClient from 'apollo-boost'
+
+const apolloClient = new ApolloClient({
+  // You should use an absolute URL here
+  uri: 'http://localhost:4000/appname/graphql/'
+})
+
+const apolloProvider = new VueApollo({
+  defaultClient: apolloClient,
+})
+
 new Vue({
   router,
   store,
+  apolloProvider,
   render: h => h(App)
 }).$mount('#app')
+
+

@@ -139,6 +139,8 @@ import VueFooter from '../../shared/footer'
 import VueHeader from '../../shared/header'
 import VuePopup from '../../shared/popup'
 
+
+
 export default {
   name: 'Main',
 
@@ -148,6 +150,8 @@ export default {
     VueHeader,
     VuePopup
   },
+
+
 
   data: () => ({
       asideFlag: false,
