@@ -30,19 +30,19 @@
                           <span class="line"></span>
                       </div>
                       <ul>                          
-                        <li v-for="(feed, idx) in feeds" :key="idx">
+                        <li v-for="(feed, idx) in feeds" :key="idx" @click="goDetail(feed.seq)">
                             <div class="feed">
                                 <div class="thumbnail">
-                                    <img src="https://cache.net-a-porter.com/images/products/1213926/1213926_ou_2000_q80.jpg" alt="">
+                                    <img :src="feed.mainimage" alt="">
                                 </div>
                                 <div class="desc">
-                                    <p class="designer">Acne Studio</p>
-                                    <p class="name">플리츠 후드 집업</p>
+                                    <p class="designer">{{ feed.designer }}</p>
+                                    <p class="name">{{ feed.name }}</p>
                                     <p class="default">
-                                        (₩ 10,000)                                               
+                                        ({{feed.currency}} {{feed.before}} )                                               
                                     </p>
                                     <p class="price">
-                                        ₩ 10,000
+                                        {{feed.currency}} {{feed.after}}
                                     </p>
                                 </div>
                             </div>
@@ -65,6 +65,8 @@ import VueFooter from '../../shared/footer'
 import VueHeader from '../../shared/header'
 import VuePopup from '../../shared/popup'
 
+import gql from 'graphql-tag'
+
 export default {
   name: 'Feed',
 
@@ -74,11 +76,32 @@ export default {
     VueHeader,
     VuePopup
   },
+  
+  apollo: {
+    // Simple query that will update the 'hello' vue property
+    feeds: gql`query {
+      feeds : selectFeeds(page: 1){
+          seq,
+          designer_seq,
+          name,
+          currency,
+          before,
+          after,
+          mainimage,
+          designer,
+          designer_kor
+      }
+    }`,
+  },
+
+  methods: {
+    goDetail(seq){
+      this.$router.push({ name: 'Detail', params: { seq }})
+    }
+  },
 
   data: () => ({
-       asideFlag: false,
-
-       feeds: [1,2,3,4,5]
+       asideFlag: false
   }),
 };
 </script>
