@@ -6,8 +6,7 @@
       <main>
         <section>
           <div class="content">
-              <div class="content-parse">
-                {{ saleInfo }}
+              <div class="content-parse" v-html="saleInfo.content">
               </div>
           </div>
         </section>
@@ -37,6 +36,10 @@ export default {
     VuePopup
   },
 
+  computed: {
+    
+  },
+
   apollo: {
     // Simple query that will update the 'hello' vue property
     saleInfo: {
@@ -52,7 +55,7 @@ export default {
       }`,
       variables () {
         return {
-            seq: this.seq,
+            seq: parseInt(this.$route.params.seq),
         }
       },
     },
@@ -60,7 +63,6 @@ export default {
 
   data: () => ({
      asideFlag: false,
-     seq: 94,
      saleInfo: {}
   }),
 };

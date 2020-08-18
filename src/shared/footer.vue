@@ -6,13 +6,13 @@
           </div>
           <div class="policy">
               <ul>
-                  <li>
+                  <li @click="goRule">
                       <span>이용약관</span>
                   </li>
-                  <li>
+                  <li @click="goPrivacy">
                       <span>개인정보취급방침</span>
                   </li>
-                  <li>
+                  <li @click="goIntro">
                       <span>서비스소개</span>
                   </li>
               </ul>
@@ -29,6 +29,18 @@ export default {
   name: 'VueFooter',
   props: {
     msg: String
+  },
+
+  methods: {
+      goIntro(){
+          this.$router.push({path: '/intro'})
+      },
+      goPrivacy(){
+          this.$router.push({path: '/privacy'})
+      },
+      goRule(){
+          this.$router.push({path: '/rule'})
+      }
   }
 }
 </script>

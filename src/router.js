@@ -11,6 +11,10 @@ import Detail from './views/feed/Detail.vue'
 
 import Designer from './views/designer/Designer.vue'
 
+import Introduce from './views/etc/Introduce.vue'
+import Privacy from './views/etc/Privacy.vue'
+import Rule from './views/etc/Rule.vue'
+
 Vue.use(VueRouter)
 
 export default new VueRouter({
@@ -45,6 +49,21 @@ export default new VueRouter({
             path: '/designer/',
             name: 'Designer',
             component: Designer
+        },
+        {
+            path: '/intro',
+            name: 'Introduce',
+            component: Introduce
+        },
+        {
+            path: '/privacy',
+            name: 'Privacy',
+            component: Privacy
+        },
+        {
+            path: '/rule',
+            name: 'Rule',
+            component: Rule
         }
     ]
 })
