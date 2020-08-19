@@ -26,8 +26,8 @@
                 <div class="desc">
                     <p class="tag">
                         <span>New</span>
-                        <span>Hot</span>
-                        <span>Recommend</span>
+                        <span style="margin-left: 3px;">Hot</span>
+                        <span style="margin-left: 3px;">Recommend</span>
                     </p>
                     <p class="designer">Our Legacy</p>
                     <p class="name">웨일코트</p>
@@ -319,6 +319,11 @@ import VueFooter from '../../shared/footer'
 import VueHeader from '../../shared/header'
 import VuePopup from '../../shared/popup'
 
+import Swiper from 'swiper/bundle';
+import 'swiper/swiper-bundle.css';
+
+import $ from 'jquery';
+
 export default {
   name: 'Detail',
 
@@ -327,6 +332,39 @@ export default {
     VueFooter,
     VueHeader,
     VuePopup
+  },
+
+  mounted(){
+    if(typeof window.swiper === 'undefined' || window.swiper == null){
+        window.swiper = new Swiper('.swiper-container', {
+            spaceBetween: 10,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        const example_1_li_widths = $('#reviews > .scroller > ul > li').outerWidth();
+        const example_1_num_elements = $('#reviews > .scroller > ul > li').length;
+        $('#reviews > .scroller').width( example_1_li_widths * example_1_num_elements );
+
+        /* eslint-disable */
+        const myScroll = new IScroll('#reviews', {
+            scrollX: true,
+            scrollY: false,
+            // momentum: false,
+            snap: true,
+            snapSpeed: 400,
+            keyBindings: true,
+            mouseWheel: true,
+            disablePointer: true,
+            disableTouch: false,
+            disableMouse: false
+        });
+    }
   },
 
   data: () => ({
