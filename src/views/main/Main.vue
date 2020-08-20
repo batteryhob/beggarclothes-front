@@ -139,7 +139,10 @@ import VueFooter from '../../shared/footer'
 import VueHeader from '../../shared/header'
 import VuePopup from '../../shared/popup'
 
+import Swiper from 'swiper/bundle';
+import 'swiper/swiper-bundle.css';
 
+import $ from 'jquery';
 
 export default {
   name: 'Main',
@@ -151,7 +154,39 @@ export default {
     VuePopup
   },
 
+  mounted(){
+    if(typeof window.swiper === 'undefined' || window.swiper == null){
+        window.swiper = new Swiper('.swiper-container', {
+            spaceBetween: 10,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
 
+        const example_1_li_widths = $('#feeds > .scroller > ul > li').outerWidth();
+        const example_1_num_elements = $('#feeds > .scroller > ul > li').length;
+        $('#feeds > .scroller').width( example_1_li_widths * example_1_num_elements );
+
+        //iscroll
+        /* eslint-disable */
+        const myScroll = new IScroll('#feeds', {
+            scrollX: true,
+            scrollY: false,
+            // momentum: false,
+            snap: true,
+            snapSpeed: 400,
+            keyBindings: true,
+            mouseWheel: true,
+            disablePointer: true,
+            disableTouch: false,
+            disableMouse: false
+        });
+    }
+  },
 
   data: () => ({
       asideFlag: false,

@@ -10,7 +10,6 @@
   "dependencies": {
     "apollo-boost": "^0.4.9",
     "axios": "^0.19.2",
-    "core-js": "^3.6.5",
     "graphql": "^15.3.0",
     "vue": "^2.6.11",
     "vue-apollo": "^3.0.4",
@@ -22,8 +21,11 @@
     "@vue/cli-plugin-eslint": "^4.4.0",
     "@vue/cli-service": "^4.4.0",
     "babel-eslint": "^10.1.0",
+    "core-js": "^3.6.5",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "jquery": "^3.5.1",
+    "swiper": "^6.1.2",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
