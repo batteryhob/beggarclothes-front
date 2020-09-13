@@ -46,10 +46,10 @@
           </div>
           <div class="right">
               <div class="btns">
-                  <button>
+                  <button @click="goLike">
                       <i class="fas fa-heart"></i>
                   </button>
-                  <button>
+                  <button @click="goSignin">
                       <i class="fas fa-user"></i>
                   </button>
               </div>
@@ -100,6 +100,12 @@ export default {
           }else{
               this.$router.push({ path: '/sale' })
           }  
+      },
+      goSignin() {
+          this.$router.push({ path: '/signin' })
+      },
+      goLike(){
+          this.$router.push({ path: '/signin' })
       }
   }
 }
