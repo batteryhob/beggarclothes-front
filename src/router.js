@@ -15,6 +15,9 @@ import Introduce from './views/etc/Introduce.vue'
 import Privacy from './views/etc/Privacy.vue'
 import Rule from './views/etc/Rule.vue'
 
+import Signin from './views/signin/Signin.vue'
+import SignCallback from './views/signin/Signin.vue'
+
 Vue.use(VueRouter)
 
 export default new VueRouter({
@@ -64,6 +67,16 @@ export default new VueRouter({
             path: '/rule',
             name: 'Rule',
             component: Rule
+        },
+        {
+            path: '/signin',
+            name: 'Signin',
+            component: Signin
+        },
+        {
+            path: '/oauth',
+            name: 'SignCallback',
+            component: SignCallback
         }
     ]
 })
