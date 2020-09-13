@@ -6,7 +6,7 @@
       <main>
         <section>
           <div class="content">
-              <div class="content-designer">
+              <!-- <div class="content-designer">
                   <img src="https://www.frameweb.com/media/files/293691" alt="">
                   <div class="wrapper">
                       <div class="rect">
@@ -22,7 +22,7 @@
                           </div>
                       </div>
                   </div>
-              </div>
+              </div> -->
               <div class="content-feed">
                   <div class="feedlist">
                       <div class="title">
@@ -81,15 +81,17 @@ export default {
     // Simple query that will update the 'hello' vue property
     feeds: gql`query {
       feeds : selectFeeds(page: 1){
-          seq,
-          designer_seq,
-          name,
-          currency,
-          before,
-          after,
-          mainimage,
-          designer,
+          seq
+          designer_seq
+          name
+          currency
+          before
+          after
+          mainimage
+          designer
           designer_kor
+          view
+          like
       }
     }`,
   },

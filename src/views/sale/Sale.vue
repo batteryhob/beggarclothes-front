@@ -72,9 +72,7 @@ export default {
   },
 
   data: () => ({
-     asideFlag: false,
-
-     mails: [1,2,3,4,5]
+     asideFlag: false
   }),
 };
 </script>

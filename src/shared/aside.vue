@@ -8,7 +8,7 @@
               <li @click="goDesigner">
                   <div>
                       <span>
-                          디자이너
+                          디자이너 랭킹
                           <i class="fas fa-chevron-right right"></i>
                       </span>
                   </div>

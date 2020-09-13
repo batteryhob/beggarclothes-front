@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: beggarclothes-front-service
+spec:
+  selector:
+    app: beggarclothes-front
+  ports:
+  - port: 9000
+    protocol: "TCP"
+    targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beggarclothes-front-deployment
+spec:
+  selector:
+    matchLabels:
+      app: beggarclothes-front
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: beggarclothes-front
+    spec:
+      containers:
+      - name: nginx
+        image: "batteryho/beggarclothes-front:latest"
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80

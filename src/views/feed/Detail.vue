@@ -110,10 +110,13 @@
                       cy="16"
                       r="15.9155"
                       class="progress-bar__progress js-progress-bar"
+                      :style="{ 
+                        strokeDashoffset: 100 - (feed.designer_point),
+                      }"
                     />
                   </svg>
                   <div class="pt">
-                    <p class="point">60</p>
+                    <p class="point">{{feed.designer_point}}</p>
                     <p class="sub">Designer</p>
                   </div>
                 </div>
@@ -125,10 +128,13 @@
                       cy="16"
                       r="15.9155"
                       class="progress-bar__progress js-progress-bar"
+                                            :style="{ 
+                        strokeDashoffset: 100 - (feed.price_point),
+                      }"
                     />
                   </svg>
                   <div class="pt">
-                    <p class="point">60</p>
+                    <p class="point">{{feed.price_point}}</p>
                     <p class="sub">Price</p>
                   </div>
                 </div>
@@ -140,11 +146,14 @@
                       cy="16"
                       r="15.9155"
                       class="progress-bar__progress js-progress-bar"
+                                            :style="{ 
+                        strokeDashoffset: 100 - (feed.essential_point),
+                      }"
                     />
                   </svg>
                   <div class="pt">
-                    <p class="point">60</p>
-                    <p class="sub">Daily</p>
+                    <p class="point">{{feed.essential_point}}</p>
+                    <p class="sub">Essential</p>
                   </div>
                 </div>
                 <div class="wrapper">
@@ -155,10 +164,13 @@
                       cy="16"
                       r="15.9155"
                       class="progress-bar__progress js-progress-bar"
+                      :style="{ 
+                        strokeDashoffset: 100 - (feed.daily_point),
+                      }"
                     />
                   </svg>
                   <div class="pt">
-                    <p class="point">60</p>
+                    <p class="point">{{feed.daily_point}}</p>
                     <p class="sub">Daily</p>
                   </div>
                 </div>
@@ -365,6 +377,11 @@ import "swiper/swiper-bundle.css";
 
 import gql from "graphql-tag";
 
+export const VIEW_FEED_DETAIL = gql`
+  mutation viewFeed($seq: Int!) {
+    result: viewFeed(seq: $seq)
+  }
+`
 export const GET_FEED_DETAIL = gql`
   query selectFeed($seq: Int!) {
     feed: selectFeed(seq: $seq) {
@@ -381,6 +398,12 @@ export const GET_FEED_DETAIL = gql`
       mainimage
       designer
       designer_kor
+      view
+      like
+      designer_point
+      price_point
+      essential_point
+      daily_point
       imgs {
         url
       }
@@ -399,6 +422,13 @@ export default {
   },
 
   async mounted() {
+
+    //뷰카운트
+    this.$apollo.mutate({
+      mutation: VIEW_FEED_DETAIL,
+      variables: { seq: parseInt(this.$route.params.seq) }
+    });
+    //디테일정보
     let res = await this.$apollo.query({
       query: GET_FEED_DETAIL,
       variables: { seq: parseInt(this.$route.params.seq) }

@@ -9,13 +9,13 @@
               <div class="content-main">
                   <div class="swiper-container">
                       <ul class="swiper-wrapper">
-                          <li class="swiper-slide" v-for="(feature, idx) in features" :key="idx" >
+                          <li class="swiper-slide" v-for="(feed, idx) in feeds" :key="idx" >
                               <div class="feature">
-                                  <img src="/img/sample3.png" alt="">
+                                  <img :src="feed.mainimage" alt="">
                                   <div class="desc">
-                                      <p>Alexandar Wang</p>
-                                      <p class="sub">페인티드 데님 오버 자켓</p>
-                                      <button>
+                                      <p>{{ feed.designer }}</p>
+                                      <p class="sub">{{ feed.name }}</p>
+                                      <button @click="goDetail(feed.seq)">
                                           View Deal
                                           <i class="fas fa-chevron-right right"></i>
                                       </button>
@@ -76,23 +76,23 @@
                       <div class="scroller">
                           <ul class="clearfix">                              
                             <li v-for="(feed, idx) in feeds" :key="idx" >
-                                <div class="feed">
+                                <div class="feed" @click="goDetail(feed.seq)">
                                     <div class="thumbnail">
-                                        <img src="/img/sample1.png" alt="">
+                                        <img :src="feed.mainimage" alt="">
                                     </div>
                                     <div class="desc">
-                                        <p class="designer">Our Legacy</p>
-                                        <p class="name">플리츠 후드 집업</p>
+                                        <p class="designer">{{ feed.designer }}</p>
+                                        <p class="name">{{ feed.name }}</p>
                                         <p class="price">
-                                            ₩ 10,000
-                                            <span>(₩ 10,000)</span>
+                                            {{feed.currency}} {{feed.after}}
+                                            <span>({{feed.currency}} {{feed.before}})</span>
                                         </p>
                                         <p class="interactive">
                                             <span class="eye">
-                                                <i class="fas fa-eye"></i>22
+                                                <i class="fas fa-eye"></i>{{feed.view}}
                                             </span>
                                             <span class="heart">
-                                                <i class="fas fa-heart"></i>1,200
+                                                <i class="fas fa-heart"></i>{{feed.like}}
                                             </span>
                                         </p>
                                     </div>
@@ -114,10 +114,10 @@
                   </div>
                   <div class="mails">
                       <ul>                          
-                        <li v-for="(mail, idx) in mails" :key="idx">
+                        <li v-for="(mail, idx) in saleInfos" :key="idx" @click="goSaleInfos(mail.seq)">
                             <div class="mail">
-                                <p class="subject">Sensse Up to 70%</p>
-                                <p class="content">blah blah blahblah blah...</p>
+                                <p class="subject">{{ mail.subject }}</p>
+                                <p class="content">from: {{ mail.from }}</p>
                                 <p class="date">2020-07-08</p>
                             </div>
                         </li>
@@ -144,6 +144,26 @@ import 'swiper/swiper-bundle.css';
 
 import $ from 'jquery';
 
+import gql from 'graphql-tag'
+
+export const GET_FEED_LIST = gql`
+  query selectFeeds($page: Int!) {
+    feeds: selectFeeds(page: $page) {
+        seq
+        designer_seq
+        name
+        currency
+        before
+        after
+        mainimage
+        designer
+        designer_kor
+        view
+        like
+    }
+  }
+`;
+
 export default {
   name: 'Main',
 
@@ -154,47 +174,78 @@ export default {
     VuePopup
   },
 
-  mounted(){
-    if(typeof window.swiper === 'undefined' || window.swiper == null){
-        window.swiper = new Swiper('.swiper-container', {
-            spaceBetween: 10,
-            pagination: {
-                el: '.swiper-pagination',
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
+  apollo: {
+    // Simple query that will update the 'hello' vue property
+    saleInfos: gql`query {
+      saleInfos : selectSaleInfos(page: 1){
+          seq,
+          from,
+          regdate,
+          subject
+      }
+    }`,
+  },
 
-        const example_1_li_widths = $('#feeds > .scroller > ul > li').outerWidth();
-        const example_1_num_elements = $('#feeds > .scroller > ul > li').length;
-        $('#feeds > .scroller').width( example_1_li_widths * example_1_num_elements );
+  async mounted() {
+    let res = await this.$apollo.query({
+      query: GET_FEED_LIST,
+      variables: { page: 1 }
+    });
+    console.log(res)
+    this.$data.feeds = res.data.feeds;
 
-        //iscroll
-        /* eslint-disable */
-        const myScroll = new IScroll('#feeds', {
-            scrollX: true,
-            scrollY: false,
-            // momentum: false,
-            snap: true,
-            snapSpeed: 400,
-            keyBindings: true,
-            mouseWheel: true,
-            disablePointer: true,
-            disableTouch: false,
-            disableMouse: false
-        });
+    this.$nextTick(() => {
+        if(typeof window.swiper === 'undefined' || window.swiper == null){
+            window.swiper = new Swiper('.swiper-container', {
+                spaceBetween: 10,
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+
+            const example_1_li_widths = $('#feeds > .scroller > ul > li').outerWidth();
+            const example_1_num_elements = $('#feeds > .scroller > ul > li').length;
+            $('#feeds > .scroller').width( example_1_li_widths * example_1_num_elements );
+
+            //iscroll
+            /* eslint-disable */
+            const myScroll = new IScroll('#feeds', {
+                scrollX: true,
+                scrollY: false,
+                // momentum: false,
+                snap: true,
+                snapSpeed: 400,
+                keyBindings: true,
+                mouseWheel: true,
+                disablePointer: true,
+                disableTouch: false,
+                disableMouse: false
+            });
+        }
+    });
+  },
+
+
+  methods: {
+    goDetail(seq){
+      this.$router.push({ name: 'Detail', params: { seq }})
+    },
+    goSaleInfos(seq){
+      this.$router.push({ name: 'Parse', params: { seq }})
     }
   },
 
   data: () => ({
       asideFlag: false,
 
-      features: [1,2,3,4,5],
-      tags: [1,2,3,4,5],
-      feeds: [1,2,3,4,5],
-      mails: [1,2,3,4,5]
+      features: [],
+      feeds: [],
+      tags: []
+      
   }),
 };
 </script>

@@ -22,14 +22,14 @@
               </button>
           </div>
           <div class="logo">
-              <img class="mobile" src="/img/logo_main.png" alt="메인로고">
-              <img class="desktop" src="/img/logo_main_hor.png" alt="메인로고">
+              <img class="mobile" @click="goMain" src="/img/logo_main.png" alt="메인로고">
+              <img class="desktop" @click="goMain" src="/img/logo_main_hor.png" alt="메인로고">
           </div>
           <div class="center">
               <ul>
                   <li @click="goDesigner">
                       <div>
-                          <span>디자이너</span>
+                          <span>디자이너 랭킹</span>
                       </div>
                   </li>
                   <li @click="goFeed">
@@ -73,6 +73,13 @@ export default {
           this.$parent.asideFlag = true
       },
       //네비게이션 이동
+      goMain() {
+          if(this.$router.currentRoute.name === 'Main'){
+              this.$parent.asideFlag = false
+          }else{
+              this.$router.push({ path: '/' })
+          }  
+      },
       goDesigner() {
           if(this.$router.currentRoute.name === 'Designer'){
               this.$parent.asideFlag = false
