@@ -33,7 +33,8 @@
                         <li v-for="(feed, idx) in feeds" :key="idx" @click="goDetail(feed.seq)">
                             <div class="feed">
                                 <div class="thumbnail">
-                                    <img :src="feed.mainimage" alt="">
+                                    <img class="one" :src="feed.mainimage" alt="">
+                                    <img class="two" :src="feed.mainimage" alt="">
                                 </div>
                                 <div class="desc">
                                     <p class="designer">{{ feed.designer }}</p>

@@ -175,15 +175,16 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 /* 공통 스타일 */
 #popup {
   position: fixed;
-  z-index: 1001;
+  z-index: 1000;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   display: table;
-  font-weight: 500;
-  color: #222; }
+  font-family: "Apple SD Gothic Neo";
+  font-size: 16px;
+  font-weight: 500; }
   #popup .wrapper {
     display: table-cell;
     vertical-align: middle; }
@@ -193,34 +194,31 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
       max-width: 350px;
       box-sizing: border-box;
       margin: 0 auto;
-      padding: 24px 24px 24px 24px;
+      padding: 24px 24px 34px 24px;
       background-color: #fff;
-      border-radius: 5px;
+      border-radius: 10px;
       box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1); }
       #popup .wrapper .contents .top {
-        font-size: 2.0rem;
-        font-family: "Apple SD Gothic Neo"; }
+        font-weight: bold; }
       #popup .wrapper .contents .message {
-        margin-top: 5px;
-        font-size: 1.4rem; }
+        font-size: 14px;
+        margin-top: 5px; }
       #popup .wrapper .contents .btns {
-        margin-top: 15px;
-        text-align: right;
-        font-size: 1.4rem; }
+        position: absolute;
+        top: 16px;
+        right: 24px;
+        margin-top: 5px;
+        text-align: right; }
         #popup .wrapper .contents .btns button {
-          width: 55px;
-          height: 30px;
+          width: 24px;
+          height: 24px;
           padding: 0;
-          border-radius: 5px;
-          background-color: #222;
+          background-color: transparent;
           color: #fff;
           border: none;
-          outline: none;
-          transition: all .1s ease-in; }
+          outline: none; }
           #popup .wrapper .contents .btns button img {
             vertical-align: middle; }
-          #popup .wrapper .contents .btns button:hover {
-            background-color: #ccc; }
 
 aside {
   display: none; }
@@ -229,7 +227,7 @@ aside {
   aside {
     display: block;
     position: fixed;
-    z-index: 1000;
+    z-index: 1001;
     top: 0;
     left: 0;
     width: 100%;

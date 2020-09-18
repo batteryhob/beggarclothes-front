@@ -175,15 +175,16 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 /* 공통 스타일 */
 #popup {
   position: fixed;
-  z-index: 1001;
+  z-index: 1000;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   display: table;
-  font-weight: 500;
-  color: #222; }
+  font-family: "Apple SD Gothic Neo";
+  font-size: 16px;
+  font-weight: 500; }
   #popup .wrapper {
     display: table-cell;
     vertical-align: middle; }
@@ -193,34 +194,31 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
       max-width: 350px;
       box-sizing: border-box;
       margin: 0 auto;
-      padding: 24px 24px 24px 24px;
+      padding: 24px 24px 34px 24px;
       background-color: #fff;
-      border-radius: 5px;
+      border-radius: 10px;
       box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1); }
       #popup .wrapper .contents .top {
-        font-size: 2.0rem;
-        font-family: "Apple SD Gothic Neo"; }
+        font-weight: bold; }
       #popup .wrapper .contents .message {
-        margin-top: 5px;
-        font-size: 1.4rem; }
+        font-size: 14px;
+        margin-top: 5px; }
       #popup .wrapper .contents .btns {
-        margin-top: 15px;
-        text-align: right;
-        font-size: 1.4rem; }
+        position: absolute;
+        top: 16px;
+        right: 24px;
+        margin-top: 5px;
+        text-align: right; }
         #popup .wrapper .contents .btns button {
-          width: 55px;
-          height: 30px;
+          width: 24px;
+          height: 24px;
           padding: 0;
-          border-radius: 5px;
-          background-color: #222;
+          background-color: transparent;
           color: #fff;
           border: none;
-          outline: none;
-          transition: all .1s ease-in; }
+          outline: none; }
           #popup .wrapper .contents .btns button img {
             vertical-align: middle; }
-          #popup .wrapper .contents .btns button:hover {
-            background-color: #ccc; }
 
 aside {
   display: none; }
@@ -229,7 +227,7 @@ aside {
   aside {
     display: block;
     position: fixed;
-    z-index: 1000;
+    z-index: 1001;
     top: 0;
     left: 0;
     width: 100%;
@@ -441,15 +439,25 @@ button {
           position: relative;
           padding: 12px;
           font-size: 2.2rem;
-          font-family: "Apple SD Gothic Neo"; }
+          font-weight: 700; }
           #main main section .content .content-tags .title .sub {
-            font-size: 11px;
-            color: #ccc; }
+            margin-top: 15px;
+            font-size: 1.4rem;
+            font-weight: 500; }
+            #main main section .content .content-tags .title .sub .update {
+              display: inline-block;
+              width: 50px;
+              height: 18px;
+              line-height: 18px;
+              text-align: center;
+              color: #c41429;
+              border: 1px solid #c41429;
+              margin-left: 5px; }
             #main main section .content .content-tags .title .sub i {
               margin-right: 2px; }
           #main main section .content .content-tags .title .more {
             position: absolute;
-            top: 14px;
+            top: 34px;
             right: 12px;
             padding: 4px 15px;
             font-size: 1.2rem;
@@ -465,7 +473,8 @@ button {
           padding: 24px 12px;
           font-size: 1.2rem; }
           #main main section .content .content-tags .ranking ul li {
-            height: 50px; }
+            height: 50px;
+            cursor: pointer; }
             #main main section .content .content-tags .ranking ul li .tag {
               display: flex;
               text-align: center; }
@@ -481,7 +490,7 @@ button {
                 width: 50px;
                 line-height: 50px;
                 font-size: 1.4rem;
-                font-family: "Apple SD Gothic Neo"; }
+                font-weight: 700; }
               #main main section .content .content-tags .ranking ul li .tag .desc {
                 text-align: left;
                 line-height: 25px; }
@@ -494,7 +503,7 @@ button {
                     color: #0077ff;
                     animation: slidedown 1.5s infinite; }
                   #main main section .content .content-tags .ranking ul li .tag .desc i.down {
-                    color: #e2264d;
+                    color: #c41429;
                     animation: slideup 1.5s infinite; }
 
 @keyframes slideup {
@@ -522,15 +531,16 @@ button {
           position: relative;
           padding: 12px;
           font-size: 2.2rem;
-          font-family: "Apple SD Gothic Neo"; }
+          font-weight: 700; }
           #main main section .content .content-sub .title .sub {
-            font-size: 11px;
-            color: #ccc; }
+            margin-top: 15px;
+            font-size: 1.4rem;
+            font-weight: 500; }
             #main main section .content .content-sub .title .sub i {
               margin-right: 2px; }
           #main main section .content .content-sub .title .more {
             position: absolute;
-            top: 14px;
+            top: 34px;
             right: 12px;
             padding: 4px 15px;
             font-size: 1.2rem;
@@ -556,11 +566,25 @@ button {
             #main main section .content .content-sub .feeds .scroller ul li .feed {
               padding: 30px 20px; }
               #main main section .content .content-sub .feeds .scroller ul li .feed .thumbnail {
+                position: relative;
                 width: 160px;
                 height: 200px;
-                overflow: hidden; }
+                overflow: hidden;
+                cursor: pointer; }
                 #main main section .content .content-sub .feeds .scroller ul li .feed .thumbnail img {
                   width: 100%; }
+                  #main main section .content .content-sub .feeds .scroller ul li .feed .thumbnail img.one {
+                    opacity: 1; }
+                  #main main section .content .content-sub .feeds .scroller ul li .feed .thumbnail img.two {
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    opacity: 0;
+                    transition: opacity .3s ease-in; }
+                #main main section .content .content-sub .feeds .scroller ul li .feed .thumbnail:hover img.one {
+                  opacity: 0; }
+                #main main section .content .content-sub .feeds .scroller ul li .feed .thumbnail:hover img.two {
+                  opacity: 1; }
               #main main section .content .content-sub .feeds .scroller ul li .feed .desc {
                 margin-top: 10px; }
                 #main main section .content .content-sub .feeds .scroller ul li .feed .desc .designer {
@@ -577,7 +601,7 @@ button {
                 #main main section .content .content-sub .feeds .scroller ul li .feed .desc .price {
                   line-height: 23px;
                   font-size: 1.2rem;
-                  color: #e2264d; }
+                  color: #c41429; }
                   #main main section .content .content-sub .feeds .scroller ul li .feed .desc .price span {
                     color: #222;
                     text-decoration-line: line-through; }
@@ -589,22 +613,23 @@ button {
                     #main main section .content .content-sub .feeds .scroller ul li .feed .desc .interactive span i {
                       margin-right: 2px; }
                       #main main section .content .content-sub .feeds .scroller ul li .feed .desc .interactive span i.fa-heart {
-                        color: #e2264d; }
+                        color: #c41429; }
       #main main section .content .content-sale {
         margin-top: 50px; }
         #main main section .content .content-sale .title {
           position: relative;
           padding: 12px;
           font-size: 2.2rem;
-          font-family: "Apple SD Gothic Neo"; }
+          font-weight: 700; }
           #main main section .content .content-sale .title .sub {
-            font-size: 11px;
-            color: #ccc; }
+            margin-top: 15px;
+            font-size: 1.4rem;
+            font-weight: 500; }
             #main main section .content .content-sale .title .sub i {
               margin-right: 2px; }
           #main main section .content .content-sale .title .more {
             position: absolute;
-            top: 14px;
+            top: 34px;
             right: 12px;
             padding: 4px 15px;
             font-size: 1.2rem;
@@ -624,7 +649,19 @@ button {
             border-bottom: 1px solid #ccc;
             box-sizing: border-box;
             padding: 10px 15px;
+            cursor: pointer;
             transition: all .2s ease-in; }
+            #main main section .content .content-sale .mails ul li.hot {
+              border-left: 2px solid #c41429; }
+              #main main section .content .content-sale .mails ul li.hot .mail .subject span {
+                display: inline-block;
+                width: 50px;
+                height: 25px;
+                line-height: 25px;
+                text-align: center;
+                background-color: #c41429;
+                color: #fff;
+                margin-left: 5px; }
             #main main section .content .content-sale .mails ul li:last-child {
               border-bottom: none; }
             #main main section .content .content-sale .mails ul li:hover {
@@ -716,32 +753,40 @@ button {
       max-width: 1280px;
       margin: 0 auto;
       margin-top: 50px; }
-      #main main section .content .content-tags .ranking ul {
-        display: flex; }
-        #main main section .content .content-tags .ranking ul li {
-          flex: 1;
-          height: 200px; }
-          #main main section .content .content-tags .ranking ul li .tag {
-            display: block;
-            text-align: center; }
-            #main main section .content .content-tags .ranking ul li .tag .thumb img {
-              width: 100px;
-              height: 100px;
-              border-radius: 50px; }
-            #main main section .content .content-tags .ranking ul li .tag .rank {
-              width: initial;
-              margin-top: 10px;
-              line-height: 40px; }
-            #main main section .content .content-tags .ranking ul li .tag .desc {
-              text-align: center;
-              line-height: 20px; }
+      #main main section .content .content-tags .title p {
+        text-align: center; }
+      #main main section .content .content-tags .ranking {
+        margin-top: 50px; }
+        #main main section .content .content-tags .ranking ul {
+          display: flex; }
+          #main main section .content .content-tags .ranking ul li {
+            flex: 1;
+            height: 200px; }
+            #main main section .content .content-tags .ranking ul li .tag {
+              display: block;
+              text-align: center; }
+              #main main section .content .content-tags .ranking ul li .tag .thumb img {
+                width: 100px;
+                height: 100px;
+                border-radius: 50px; }
+              #main main section .content .content-tags .ranking ul li .tag .rank {
+                width: initial;
+                margin-top: 10px;
+                line-height: 40px; }
+              #main main section .content .content-tags .ranking ul li .tag .desc {
+                text-align: center;
+                line-height: 20px; }
     #main main section .content .content-sub {
       max-width: 1280px;
       margin: 0 auto;
       margin-top: 50px; }
+      #main main section .content .content-sub .title p {
+        text-align: center; }
     #main main section .content .content-sale {
       max-width: 1280px;
       margin: 0 auto;
       margin-top: 50px; }
+      #main main section .content .content-sale .title p {
+        text-align: center; }
     #main footer {
       padding: 18px 100px; } }

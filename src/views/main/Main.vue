@@ -33,12 +33,12 @@
 
               <div class="content-tags">
                   <div class="title">
-                      <p>Designer Ranking</p>
-                      <!-- <p class="sub"><i class="fas fa-info-circle"></i>디매 어미새 고아캐등 패션카페 24시간 언급량</p> -->
-                      <span class="more">
-                          More
-                          <i class="fas fa-chevron-right right"></i>
-                      </span>
+                    <p>이번주 디자이너 랭킹</p>
+                    <p class="sub">2020년 9월 17일 <span class="update">update</span></p>
+                    <span class="more">
+                        More
+                        <i class="fas fa-chevron-right right"></i>
+                    </span>
                   </div>
                   <div class="ranking">
                       <ul>                          
@@ -65,12 +65,12 @@
 
               <div class="content-sub">
                   <div class="title">
-                      <p>Curation</p>
-                      <!-- <p class="sub"><i class="fas fa-info-circle"></i>해외명품 오픈마켓 중고나라 큐레이션 딜</p> -->
-                      <span class="more">
-                          More
-                          <i class="fas fa-chevron-right right"></i>
-                      </span>
+                    <p>추천</p>
+                    <p class="sub">매일 매일 새로운 세일 아이템 추천</p>
+                    <span class="more">
+                        More
+                        <i class="fas fa-chevron-right right"></i>
+                    </span>
                   </div>
                   <div class="feeds iscroll-container" id="feeds">
                       <div class="scroller">
@@ -78,7 +78,8 @@
                             <li v-for="(feed, idx) in feeds" :key="idx" >
                                 <div class="feed" @click="goDetail(feed.seq)">
                                     <div class="thumbnail">
-                                        <img :src="feed.mainimage" alt="">
+                                        <img class="one" :src="feed.mainimage" alt="">
+                                        <img class="two" :src="feed.mainimage" alt="">
                                     </div>
                                     <div class="desc">
                                         <p class="designer">{{ feed.designer }}</p>
@@ -105,18 +106,18 @@
 
               <div class="content-sale">
                   <div class="title">
-                      <p>Sale Infomation</p>
-                      <!-- <p class="sub"><i class="fas fa-info-circle"></i>전세계 세일정보 자동 수집</p> -->
-                      <span class="more">
-                          More
-                          <i class="fas fa-chevron-right right"></i>
-                      </span>
+                    <p>세일정보</p>
+                    <p class="sub">전세계 쇼핑몰 세일정보 실시간 수집</p>
+                    <span class="more">
+                        More
+                        <i class="fas fa-chevron-right right"></i>
+                    </span>
                   </div>
                   <div class="mails">
                       <ul>                          
-                        <li v-for="(mail, idx) in saleInfos" :key="idx" @click="goSaleInfos(mail.seq)">
-                            <div class="mail">
-                                <p class="subject">{{ mail.subject }}</p>
+                        <li class="hot" v-for="(mail, idx) in saleInfos" :key="idx" @click="goSaleInfos(mail.seq)">
+                            <div class="mail">                                
+                                <p class="subject"><span style="margin-right: 10px;">hot</span>{{ mail.subject }}</p>
                                 <p class="content">from: {{ mail.from }}</p>
                                 <p class="date">2020-07-08</p>
                             </div>
